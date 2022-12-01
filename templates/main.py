@@ -1,4 +1,4 @@
-import sys, os.path;sys.path.append(os.path.abspath("./src"))
+import sys, os.path;sys.path.append(os.path.abspath("./{{YEAR}}"))
 import util
 import time
 
@@ -18,8 +18,8 @@ if __name__ == "__main__":
     out_2 = part_2(data)
     t3 = time.time()
 
-    time_1 = round(t2-t1, 2)
-    time_2 = t3-t2
+    time_1 = round(t2-t1, 8)
+    time_2 = round(t3-t2, 8)
 
     print(f"\n\n{'Code Output':-^30}")
     print(f"{'Part': <10}{'Time Taken': ^10}{'Output': >10}")

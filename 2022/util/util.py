@@ -38,7 +38,8 @@ def get_input(day: int, year: int = YEAR) -> str:
     with open(os.path.join(os.path.dirname(__file__), f"../../cache/{year}_{day}_input.txt"), "w") as f:
         out = req.text.strip()
         f.write(out)
-        return out
+
+    return out
 
 
 def create_day(day: int, year: int = YEAR):
@@ -86,11 +87,11 @@ class Point3D:
 
 if __name__ == "__main__":
     from datetime import datetime
-    now = datetime.now()
+    now = datetime.today()
 
-    if datetime.month == 12 and datetime.day >= 25:
+    if now.month == 12 and now.day <= 25:
         if input("Would you like to automatically create today? (y/N) ").lower() == "y":
-            create_day(datetime.day)
+            create_day(now.day)
             exit()
 
     day = input("What day would you like to create? ")
