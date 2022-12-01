@@ -9,7 +9,7 @@ Join my leaderboard @ `1560338-a1be3b1a`
   2022 - 2 ⭐
 </h1>
 <a href="2022\01\main.py">
-  <img src="Media\2022\01.png" width="161px">
+  <img src="media\2022\01.png" width="161px">
 </a>
 <!-- AOC TILES END -->
 <br>
