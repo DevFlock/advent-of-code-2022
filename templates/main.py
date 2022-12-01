@@ -2,7 +2,7 @@ import sys, os.path;sys.path.append(os.path.abspath("./src"))
 import util
 import time
 
-data = util.get_input(1, 2021)
+data = util.get_input({{DAY}}, {{YEAR}})
 
 def part_1(inp):
     return None

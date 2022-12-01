@@ -3,3 +3,8 @@
 **/.vscode/
 cache/*.txt
 .env
+
+# If you want AoCTiles please visit LiquidFun's
+# page @ https://github.com/LiquidFun/adventofcode
+AoCTiles/
+session.cookie
