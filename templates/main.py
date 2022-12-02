@@ -1,4 +1,4 @@
-import sys, os.path;sys.path.append(os.path.abspath("./{{YEAR}}"))
+import sys, os.path;sys.path.append(os.path.abspath(".."))
 import util
 import time
 
