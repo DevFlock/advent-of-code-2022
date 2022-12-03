@@ -52,7 +52,7 @@ def create_day(day: int, year: int = YEAR):
         raise ValueError("\"day\" has to be an int from 1-25 (inclusive)")
 
     base = os.path.dirname(__file__)
-    _dir = os.path.join(base, "../..", year := str(year), day := str(day))  # type: ignore
+    _dir = os.path.join(base, "../..", year := str(year), day := str(day).zfill(2))  # type: ignore
     templates = os.path.join(base, "../../templates")
 
     try: os.makedirs(_dir)
