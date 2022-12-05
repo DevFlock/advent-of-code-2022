@@ -36,7 +36,7 @@ def get_input(day: int, year: int = YEAR) -> str:
         raise Exception(f"Unable to get input, error code: {req.status_code}")
 
     with open(os.path.join(os.path.dirname(__file__), f"../../cache/{year}_{day}_input.txt"), "w") as f:
-        out = req.text.strip()
+        out = req.text
         f.write(out)
 
     return out
