@@ -1,4 +1,4 @@
-import sys, os.path;sys.path.append(os.path.abspath(".."))
+import sys, pathlib;sys.path.append(str(pathlib.Path(__name__).absolute().parent.parent))
 import util
 import time
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     d2 = part_2("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg") == 29
     e2 = part_2("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw") == 26
     print(sum([a,b,c,d,e]) == 5, sum([a2,b2,c2,d2,e2]) == 5)
-    
+
     t1 = time.time()
     out_1 = part_1(data)
     t2 = time.time()

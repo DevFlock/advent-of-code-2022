@@ -65,6 +65,7 @@ def create_day(day: int, year: int = YEAR):
         data = f.read()
 
     with open(os.path.join(_dir, "main.py"), "w") as f:
+        day = str(int(day)) # This is to remove any 0's from start
         f.write(data.replace("{{YEAR}}", year).replace("{{DAY}}", day))  # type: ignore
 
 

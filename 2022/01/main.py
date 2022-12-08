@@ -1,4 +1,4 @@
-import sys, os.path;sys.path.append(os.path.abspath(".."))
+import sys, pathlib;sys.path.append(str(pathlib.Path(__name__).absolute().parent.parent))
 import util
 import time
 
