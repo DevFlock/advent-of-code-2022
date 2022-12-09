@@ -75,7 +75,21 @@ class Point2D:
         self.y = y
 
     def manhattan_distance(self, other: Self) -> int:
-        return abs(self.x - other.x) + abs(self.y, other.y)
+        return abs(self.x - other.x) + abs(self.y - other.y)
+
+    @classmethod 
+    def add(cls, p1, p2):
+        return Point2D((p1.x+p2.x), (p1.y+p2.y))
+    
+    @classmethod
+    def multiply(cls, p1, p2):
+        return Point2D((p1.x*p2.x), (p1.y*p2.y))
+    
+    def __str__(self) -> str:
+        return f"Point(x:{self.x}, y:{self.y})"
+    
+    def __repr__(self) -> str:
+        return f"Point(x:{self.x}, y:{self.y})"
 
 class Point3D:
     def __init__(self, x: int, y: int, z: int) -> None:
@@ -91,9 +105,8 @@ if __name__ == "__main__":
     now = datetime.today()
 
     if now.month == 12 and now.day <= 25:
-        if input("Would you like to automatically create today? (y/N) ").lower() == "y":
-            create_day(now.day)
-            exit()
+        create_day(now.day)
+        exit()
 
     day = input("What day would you like to create? ")
     create_day(day)
