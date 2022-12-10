@@ -74,7 +74,7 @@ def part_1(inp, example=False):
     return len(visited)
 
 def part_2(inp, example=False):
-    head_pos = Point2D(0, 0)
+    head_pos = Point2D(11, 5)
     knots = [Point2D(0, 0) for _ in range(9)]
     tail_pos = knots[-1]
     visited = set()
@@ -88,45 +88,54 @@ def part_2(inp, example=False):
 
         for _ in range(count):
             head_pos = Point2D.add(head_pos, _dir)
-            distance = head_pos.manhattan_distance(tail_pos)
-
-            if (tail_pos.x, tail_pos.y) == (head_pos.x, head_pos.y):
-                continue
-
-            if distance > 2:
-
-                xdif = head_pos.x - tail_pos.x
-                ydif = head_pos.y - tail_pos.y
-
-                if xdif == 0:
-                    direction = Point2D(0, ydif//abs(ydif))
-                elif ydif == 0:
-                    direction = Point2D(xdif//abs(xdif), 0)
+            for index, knot in enumerate(knots):
+                if index != 0:
+                    target_knot = knots[index-1]
                 else:
-                    direction = Point2D(xdif//abs(xdif), ydif//abs(ydif))
+                    target_knot = head_pos
+                distance = target_knot.manhattan_distance(knot)
 
-                tail_pos = Point2D.add(tail_pos, direction)    
+                if (knot.x, knot.y) == (target_knot.x, target_knot.y):
+                    continue
 
-            elif distance == 2 and (head_pos.y == tail_pos.y or head_pos.x == tail_pos.x):
-                xdif = head_pos.x - tail_pos.x
-                ydif = head_pos.y - tail_pos.y
+                if distance > 2:
 
-                if xdif == 0:
-                    direction = Point2D(0, ydif//abs(ydif))
-                elif ydif == 0:
-                    direction = Point2D(xdif//abs(xdif), 0)
+                    xdif = target_knot.x - knot.x
+                    ydif = target_knot.y - knot.y
 
-                tail_pos = Point2D.add(tail_pos, direction)    
+                    if xdif == 0:
+                        direction = Point2D(0, ydif//abs(ydif))
+                    elif ydif == 0:
+                        direction = Point2D(xdif//abs(xdif), 0)
+                    else:
+                        direction = Point2D(xdif//abs(xdif), ydif//abs(ydif))
+
+                    knots[index] = Point2D.add(knot, direction)    
+
+                elif distance == 2 and (target_knot.y == knot.y or target_knot.x == knot.x):
+                    xdif = target_knot.x - knot.x
+                    ydif = target_knot.y - knot.y
+
+                    if xdif == 0:
+                        direction = Point2D(0, ydif//abs(ydif))
+                    elif ydif == 0:
+                        direction = Point2D(xdif//abs(xdif), 0)
+
+                    tail_pos = Point2D.add(tail_pos, direction)    
 
 
             if str(tail_pos) not in visited:
                 visited.add(str(tail_pos))
 
+            # print(knots)
+
             if example:
-                grid = [["." for i in range(6)] for i in range(6)]
+                grid = [["." for i in range(36)] for i in range(36)]
 
                 grid[head_pos.x][head_pos.y] = "H"
-                grid[tail_pos.x][tail_pos.y] = "t"
+                for index, knot in enumerate(knots):
+                    grid[knot.x][knot.y] = str(index)
+                    # print(knot.x, knot.y)
 
                 # for vis in visited:
                 #     grid[vis.x][vis.y] = "x"

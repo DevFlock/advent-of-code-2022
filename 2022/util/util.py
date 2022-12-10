@@ -33,7 +33,7 @@ def get_input(day: int, year: int = YEAR) -> str:
                 cookies={"session": SESSION})
 
     if req.status_code != 200:
-        raise Exception(f"Unable to get input, error code: {req.status_code}")
+        raise Exception(f"Unable to get input, error code: {req.status_code} {req.reason}")
 
     with open(os.path.join(os.path.dirname(__file__), f"../../cache/{year}_{day}_input.txt"), "w") as f:
         out = req.text
